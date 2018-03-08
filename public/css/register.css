@@ -1,0 +1,84 @@
+/*
+* @Author: Administrator
+* @Date:   2018-03-01 16:42:47
+* @Last Modified by:   Administrator
+* @Last Modified time: 2018-03-08 15:47:56
+*/
+*{	margin: 0;
+			padding: 0;
+			font-size: 0.3rem;
+			font-family: "微软雅黑";
+		}
+		.container{
+			width: 5.67rem;
+			margin: 0.7rem auto;
+			/*border: 1px solid red;*/
+		}
+		.register-header{
+			/*display: flex;*/
+			/*justify-content: space-between;*/
+			height: 0.45rem;
+			line-height: 0.45rem;
+			margin-bottom: 0.5rem;
+		}
+		.register-header h2{
+			font-size:0.40rem; 
+			/*line-height: 0.45rem;*/
+			height: 0.45rem;
+			font-weight: normal;
+			float: left;
+		}
+		.register-header .a-box {
+			border: 1px solid red;
+			border-radius: 5px;
+			height: 0.45rem;
+			line-height: 0.45rem;
+			box-sizing: border-box;
+			/*padding: */
+			/*height: 0.4rem;*/
+			/*vertical-align: middle;*/
+			float: right;
+		}
+		.register-header a{
+			display: block;
+			text-decoration: none;
+			padding: 0rem 0.3rem;
+			font-size: 0.25rem;
+			color: red;
+		}
+		.container form p{
+			margin-top: 0.3rem;
+		}
+		.container input{
+			width: 5.67rem;
+			height: 0.8rem;
+			border: none;
+			border-bottom: 2px solid #ccc;
+			outline: none;
+			/*text-indent: 0.4rem;*/
+			/*background-color: #fff;*/
+		}
+		.container #verfication-validation{
+			width: 4rem;
+		}
+		.container  #verfication{
+			font-weight: bold;
+			font-size: 0.45rem;
+			letter-spacing: 0.1rem;
+			border-bottom: 2px solid #ccc;
+			width: 1.67rem;
+			height: 0.8rem;
+			line-height: 0.8rem;
+			float: right;
+			
+		}
+		.container form .submit{
+			margin-top: 0.6rem;
+
+		}
+		.container form .submit input{
+			font-weight: normal;
+			color: #fff;
+			font-size: 0.30rem;
+			background-color: #38b1e6;
+		}

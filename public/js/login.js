@@ -53,7 +53,8 @@
 						},
 						success:function(data){
 							// console.log(data)
-							alert("success")
+							localStorage.setItem("username",_username);
+							
 							if(data.status==="ok"){
 								alert("登录成功");
 								location.href="/";

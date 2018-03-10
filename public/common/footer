@@ -1,0 +1,18 @@
+<footer class="footer">
+		<div class="custom" id="custom"><a href="javascript:void(0);"><i class="iconfont icon-suoshuzhiwei"></i><span>职位</span></a></div>
+		<div class="search" id="search"><a href="javascript:void(0);"><i class="iconfont icon-sousuo"></i> <span>搜索</span></a></div>
+		<div class="mine" id="mine"><a href="javascript:void(0);"><i class="iconfont icon-wode"></i><span>我的</span></a></div>
+	</footer>
+
+
+	<script>
+		$("#mine").click(function(){
+			location.href="/mine"
+		})
+		$("#custom").click(function(){
+			location.href="/"
+		})
+		$("#search").click(function(){
+			location.href="/search"
+		})
+	</script>

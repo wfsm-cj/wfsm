@@ -3,8 +3,84 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="common/iconfont.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/base.js"></script>
+	<script>
+		$(function(){
+			var _username=localStorage.username;
+			// console.log(_username)
+			// $.ajax({
+			// 	url:"http://192.168.155.1:3000/deal/mine",
+			// 	method:"get",
+			// 	data:{
+			// 		"username":_username
+			// 	},
+			// 	success:function(data){
+			// 		console.log(data)
+			// 		
+			// 	},
+			// 	error:function(xhr,err){
+			// 		console.log(err)
+			// 	}
+
+			// })
+
+
+			// 同步session
+			var _username=localStorage.username;
+			$.ajax({
+				method:"get",
+				url:"http://192.168.155.1:3000/deal/mine",
+				data:{username:_username},
+				success:function(data){
+					// $(".container").before(data);
+					
+					console.log(data);
+					if(data.status=="no"){
+						location.href="/login";
+					}else{
+						data=data.msg;
+						$(".mine-username").text(data[0].uname);
+						$(".mine-top img").attr("src",data[0].pic);
+					}
+				}
+			})
+
+
+			$("#login-quit").click(function(){
+				var result=confirm("你是否要退出登录");
+				if(result==true){
+					localStorage.removeItem("username");
+					location.href="/login";
+				}
+
+			})
+
+		})
+	</script>
 </head>
 <body>
-	<h1>mine</h1>
+
+	<div class="container">
+		<div class="mine-t">
+			<div class="mine-top">
+				<img src="/dsa" alt="wu">
+				<div class="mine-username">dfa</div>
+			</div>
+			<div class="mine-bottom">
+				<section class="mine-box"><i>icon</i><span>收藏</span></section>
+				<section class="mine-box"><i>icon</i><span>收藏</span></section>
+				<section class="mine-box"><i>icon</i><span>收藏</span></section>
+				<section class="mine-box"><i>icon</i><span>收藏</span></section>
+				<section class="mine-box" id="login-quit"><i>icon</i><span>注销登录</span></section>
+				<!-- section. -->
+			</div>
+		</div>
+	</div>
+	
 </body>
 </html>

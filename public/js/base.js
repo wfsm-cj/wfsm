@@ -32,3 +32,23 @@ function code(len){
 				}
 				return str;
 			}
+
+
+//插入头部
+$.ajax({
+			method:"get",
+			url:"http://192.168.155.1:3000/common/header",
+			success:function(data){
+				$(".container").before(data);
+			}
+		})
+
+// 插入footer
+
+$.ajax({
+			method:"get",
+			url:"http://192.168.155.1:3000/common/footer",
+			success:function(data){
+				$(".container").after(data);
+			}
+		})

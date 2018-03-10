@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2018-03-07 14:45:40
 * @Last Modified by:   Administrator
-* @Last Modified time: 2018-03-08 17:37:49
+* @Last Modified time: 2018-03-10 16:17:40
 */
 var express = require('express');
 var router = express.Router();
@@ -18,6 +18,8 @@ var connection=mysql.createConnection({
 });
  connection.connect();//连接是异步的  不能写在里面
  
+
+ // 处理登录
 /* GET home page. */
 router.get('/login', function(req, res, next) {
 	
@@ -60,7 +62,7 @@ router.get('/login', function(req, res, next) {
   // connection.end();
 });
 
-
+//处理注册
 router.get("/register",function(req,res,next){
   //ajax传过去是password
   var _username=req.query.username;
@@ -88,5 +90,47 @@ router.get("/register",function(req,res,next){
         }
       }
   })
+})
+
+
+//处理首页信息
+router.get("/info",function(req,res,next){
+  var queryString="select * from info";
+  connection.query(queryString,function(err,results,fileds){
+    if(err){
+      throw err;
+    }
+    // console.log(results);
+    return res.json(results);
+  })
+
+})
+
+
+
+// 处理我的页面
+router.get("/mine",function(req,res,next){
+  var _username=req.query.username;
+      console.log(_username);
+      console.log(typeof _username)
+      //返回的不是字符"undefined" 是 undefined
+  if(_username==undefined){
+    console.log("1111");
+    // res.setHeader("Cache-Control","no-cache");
+    // res.redirect("/login");
+    return res.json({status:"no",msg:""})
+  }else{
+       var queryString="select * from user where uname=?";
+        connection.query(queryString,_username,function(err,results,fileds){
+          if(err){
+            throw err;
+          }
+          // console.log(results);
+          return res.json({status:"ok",msg:results});
+        })
+  }
+
+  
+
 })
 module.exports = router;

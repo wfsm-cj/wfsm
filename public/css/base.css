@@ -2,5 +2,64 @@
 * @Author: Administrator
 * @Date:   2018-03-01 16:46:46
 * @Last Modified by:   Administrator
-* @Last Modified time: 2018-03-01 16:46:46
+* @Last Modified time: 2018-03-10 13:34:33
 */
+*{
+	margin: 0;padding: 0;
+	font-size: 0.3rem;
+	font-family: "微软雅黑";
+		
+}
+
+a{
+	text-decoration: none;
+	color: #332;
+}
+
+/*header样式开始*/
+.header h1{
+			font-size: 0.4rem;
+			letter-spacing: 0.2rem;
+			height: 1rem;
+			background-color: #555;
+			line-height: 1rem;
+			text-align: center;
+			color: #fff;
+		}
+/*头部样式结束*/
+
+/*footer样式开始*/
+	.footer{
+			display: flex;
+			justify-content: space-between;
+			width: 7.15rem;
+			height: 1.2rem;
+			position: fixed;
+			/*top:4rem*/
+			bottom: 0;
+			left: 0;
+			background-color: #555;
+			z-index: 999;
+
+		}
+		.footer div{
+			/*border: 1px solid red;*/
+			flex: 1;
+			text-align: center;
+			height: 1.2rem;
+			
+		
+
+		}
+		.footer div a{
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			height: 1.2rem;
+			color: #fff;
+		}
+
+
+/*footer样式结束*/
+
+

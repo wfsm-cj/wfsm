@@ -54,6 +54,12 @@
 								<div class="salary"><span>${curr.salary}</span></div>
 							</div>`);
 							$(".container").append(_box);
+
+							// _script=$(`$(".container .box").click(function(){
+							// 		console.log("ok")
+							// 	})`)
+
+							// $("body").append(_script);
 						})
 					}
 				})
@@ -81,14 +87,13 @@
 
 			$("#custom").click(getInfo);
 
-
-			$("#search").click(function(){
-				var _search=$(`<div class="search">
-				<input type="text" placeholder="搜索学校或职位" id="inputInfo">
-				<input type="button" value="搜索" id="search_2">
-		</div>`)
-				$(".container").empty().append(_search);
+			$(".container")	.delegate(".box","click",function(curr){
+				console.log($(this).index());
+				var index=$(this).index()+1;
+				location.href="/job/"+index+".html";
 			})
+
+			
 
 
 			
@@ -102,6 +107,7 @@
 		<h1>师大就业网</h1>
 	</header> -->
 	<section class="container">
+
 
 <style>
 	

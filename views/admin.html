@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+		 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="/css/base.css">
+	<!-- <link rel="stylesheet" href="/css/index.css"> -->
+	<!-- <link rel="stylesheet" href="//common/iconfont.css"> -->
+	<script src="/js/jquery.js"></script>
+	<script src="/js/base.js"></script>
+	<!-- <script src="https://cdn.bootcss.com/jquery/1.2.3/jquery.js"></script> -->
+	<script src="https://cdn.bootcss.com/jquery/2.1.0/jquery.js"></script>
+	<!-- 管理页面 -->
+</head>
+<body>
+	<!-- <h1><%= 0 %></h1> -->
+
+
+<style>
+	.admin{
+		display: flex;
+
+	}
+	.admin .left-list{
+		background-color: yellow;
+		flex: 1;
+	}
+	.admin .left-list .list-box{
+		height: 1rem;
+		line-height: 1rem;
+		border: 1px solid red;
+	}
+
+	.admin .left-list .list-box a{
+		display: block;
+		height: 1rem;
+		line-height: 1rem;
+		text-align: left;
+		text-indent: 0.2rem;
+	}
+	.admin .right-content{
+		background-color: pink;
+		flex: 3;
+	}
+	/*每个模块不同高度*/
+	.admin .right-content .user{
+		padding: 0.2rem;
+		height: 2.6rem;
+		background-color: lightblue;
+		border: 1px solid red;
+		box-sizing: border-box;
+
+	}
+	.admin .right-content .company{
+		padding: 0.2rem;
+		height: 3.5rem;
+		background-color: lightblue;
+		border: 1px solid red;
+		box-sizing: border-box;
+
+	}
+	.admin .right-content .info{
+		padding: 0.2rem;
+		height: 4.8rem;
+		background-color: lightblue;
+		border: 1px solid red;
+		box-sizing: border-box;
+
+	}
+	.admin .right-content .right-content-box input{
+		border: none;
+		outline: none;
+		text-indent: 0.3rem;
+	}
+	.admin .right-content .right-content-box img{
+		margin-top: 0.2rem;
+		margin-right: 0.5rem;
+		background-color: deeppink;
+		width: 1rem;
+		height: 1rem;
+		border-radius: 50%;
+		float: left;
+	}
+
+	.admin .right-content .right-content-box input[type=button]{
+		margin: 0.5rem 0.2rem 0.3rem;
+		background-color: red;
+		width: 1rem;
+		height: 0.6rem;
+		border-radius: 0.1rem;
+		text-align: center;
+		line-height: 0.3rem;
+		text-indent: 0;
+		vertical-align: center;
+		float: left;
+
+	}
+</style>
+	<div class="container admin">
+		<div class="left-list">
+			<div class="list-box"><a href="" id="companyList">公司列表</a><a href=""></a></div>
+			<div class="list-box"><a href="" id="userList">管理员列表</a></div>
+			<div class="list-box"><a href="" id="infoList">招聘信息</a></div>
+			<div class="list-box"><a href=""></a></div>
+		</div>
+		<div class="right-content">
+			<div class="right-content-box info">
+				<div class="user-left">
+					<p>公&nbsp;司&nbsp;名：<input type="text" class="companyName"></p>
+					<p>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：<input type="text" class="address"></p>
+					<p>工&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作：<input type="text" class="job"></p>
+					<p>工&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;资：<input type="text" class="salary"></p>
+					<p>时&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;间：<input type="text" class="time"></p>
+					<p>条&nbsp;件&nbsp;一：<input type="text" value="" class="condition1"></p>
+					<p>条&nbsp;件&nbsp;二：<input type="text" value="" class="condition2"></p>
+					<p>条&nbsp;件&nbsp;三：<input type="text" value="" class="condition3"></p>
+					
+				</div>
+				<div class="user-bottom">
+					<img src="/dfsa" alt="">
+					<input type="button" value="修改" class="alter">
+					<input type="button" value="删除" class="del">
+				</div>
+			</div>
+			<div class="right-content-box">
+				
+			</div>
+			<div class="right-content-box">fdsafsa</div>
+			<div class="right-content-box">fdsafsa</div>
+			<div class="right-content-box">fdsafsa</div>
+			<div class="right-content-box">fdsafsa</div>
+			<div class="right-content-box">fdsafsa</div>
+			<div class="right-content-box">fdsafsa</div>
+			<div class="right-content-box">fdsafsa</div>
+		</div>
+	</div>
+
+
+	<script>
+		$(function(){
+
+			$("#userList").click(function(e){
+				$(".right-content").attr("id","user")
+				e.preventDefault();
+				// console.log($(this).attr("id"));
+				// var _id=$(this).attr("id");
+
+				$.ajax({
+					url:"http://192.168.155.1:3000/admin/userList",
+					method:"get",
+					success:function(data){
+						$(".right-content").empty();
+						data.forEach(function(curr,index,arr){
+							// console.log(curr)
+							var _info=`<div class="right-content-box user id_${curr.id}">
+				<div class="user-left">
+					<p>用&nbsp;户&nbsp;名：<input type="text" value="${curr.uname}" class="username"></p>
+					<p>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="text" value="${curr.password}" class="password"></p>
+					<p>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：<input type="text" value="${curr.tel}" class="tel"></p>
+				</div>
+				<div class="user-bottom">
+					<img src="${curr.pic}" alt="">
+					<input type="button" value="修改" class="alter-user">
+					<input type="button" value="删除" class="del-user">
+				</div>
+			</div>`;
+			$(".right-content").append(_info);
+						})
+					}
+
+				})
+			})
+
+// company点击
+			$("#companyList").click(function(e){
+				$(this).parents(".right-content").attr("id","company")
+				e.preventDefault();
+				// console.log($(this).attr("id"));
+				// var _id=$(this).attr("id");
+
+				$.ajax({
+					url:"http://192.168.155.1:3000/admin/companyList",
+					method:"get",
+					success:function(data){
+						$(".right-content").empty();
+						data.forEach(function(curr,index,arr){
+							// console.log(curr)
+							var _info=`<div class="right-content-box company id_${curr.id}">
+				<div class="user-left">
+					<p>公&nbsp;司&nbsp;名：<input type="text" class="companyName" value="${curr.companyName}"></p>
+					<p>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：<input type="text" class="address" value="${curr.address}"></p>
+					<p>介&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;绍：<input type="text" class="info" value="${curr.info}"></p>
+					<p>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：<input type="text"  class="tel" value="${curr.tel}"></p>
+					<p>人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数：<input type="text" value="${curr.companyPerson}" class="companyPerson" ></p>
+				</div>
+				<div class="user-bottom">
+					<img src="${curr.companyPic}" alt="">
+					<input type="button" value="修改" class="alter-company">
+					<input type="button" value="删除" class="del-company">
+				</div>
+			</div>`;
+			$(".right-content").append(_info);
+						})
+					}
+
+				})
+			})
+
+
+// infoList 点击   ----wei wan 
+			$("#infoList").click(function(e){
+				$(this).parents(".right-content").attr("id","company")
+				e.preventDefault();
+				// console.log($(this).attr("id"));
+				// var _id=$(this).attr("id");
+
+				$.ajax({
+					url:"http://192.168.155.1:3000/admin/companyList",
+					method:"get",
+					success:function(data){
+						$(".right-content").empty();
+						data.forEach(function(curr,index,arr){
+							// console.log(curr)
+							var _info=`<div class="right-content-box company id_${curr.id}">
+				<div class="user-left">
+					<p>公&nbsp;司&nbsp;名：<input type="text" class="companyName" value="${curr.companyName}"></p>
+					<p>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：<input type="text" class="address" value="${curr.address}"></p>
+					<p>介&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;绍：<input type="text" class="info" value="${curr.info}"></p>
+					<p>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：<input type="text"  class="tel" value="${curr.tel}"></p>
+					<p>人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数：<input type="text" value="${curr.companyPerson}" class="companyPerson" ></p>
+				</div>
+				<div class="user-bottom">
+					<img src="${curr.companyPic}" alt="">
+					<input type="button" value="修改" class="alter-company">
+					<input type="button" value="删除" class="del-company">
+				</div>
+			</div>`;
+			$(".right-content").append(_info);
+						})
+					}
+
+				})
+			})
+
+
+
+			// $("#del").click(function(){
+			// 	console.log("del")
+			// }) 
+			// 动态元素 on绑定事件       删除事件
+		// url是admin后面跟的网址  delSign是user del键标志
+			function del(url,delSign){
+				var delSign=".del-"+delSign
+				console.log(delSign)
+				$(".right-content").on("click",delSign,function(e){
+						console.log(e.target);
+						var _class=$(e.target).parents(".right-content-box").attr("class").split(" ");
+						var curr_index=_class[2].split("_")[1];
+						console.log(curr_index)
+
+
+						// console.log("del")
+						if(confirm("是否删除")){
+
+							$(e.target).parents(".right-content-box").remove();
+							$.ajax({
+								url:"http://192.168.155.1:3000/admin/"+url,
+								data:{
+									currIndex:curr_index,
+									type:"del"
+								},
+								method:"get",
+								success:function(data){
+									// console.log()
+									if(data.status=="ok"){
+										alert("删除成功");
+									}
+								}
+							})
+						}
+						
+					})
+			}
+
+				del("userList","user")	
+				del("companyList","company");
+		
+
+
+			//修改事件   user
+			$(".right-content").on("click",".alter-user",function(e){
+					var _username=$(e.target).parents(".right-content-box").find(".username").val();
+					var _password=$(e.target).parents(".right-content-box").find(".password").val();
+					var _tel=$(e.target).parents(".right-content-box").find(".tel").val();
+					// var _info=$(e.target).parents(".right-content-box").find(".info").val();
+					// var _companyPerson=$(e.target).parents(".right-content-box").find(".companyPerson").val();
+					var _pic=$(e.target).parents(".right-content-box").find("img").attr("src");
+					var _class=$(e.target).parents(".right-content-box").attr("class").split(" ");
+					var curr_index=_class[2].split("_")[1];
+				console.log(curr_index)
+					console.log(_username)
+					$.ajax({
+						url:"http://192.168.155.1:3000/admin/userList",
+						data:{
+							username:_username,
+							password:_password,
+							tel:_tel,
+							pic:_pic,
+							currIndex:curr_index,
+							type:"alter"
+						},
+						method:"get",
+						success:function(data){
+							// console.log()
+							if(data.status=="ok"){
+								alert("修改成功");
+							}
+						}
+					})
+			})
+
+// 修改事件 company
+			$(".right-content").on("click",".alter-company",function(e){
+					var _companyName=$(e.target).parents(".right-content-box").find(".companyName").val();
+					var _address=$(e.target).parents(".right-content-box").find(".address").val();
+					var _info=$(e.target).parents(".right-content-box").find(".info").val();
+					var _companyPerson=$(e.target).parents(".right-content-box").find(".companyPerson").val();
+					var _tel=$(e.target).parents(".right-content-box").find(".tel").val();
+					var _pic=$(e.target).parents(".right-content-box").find("img").attr("src");
+					var _class=$(e.target).parents(".right-content-box").attr("class").split(" ");
+					var curr_index=_class[2].split("_")[1];
+				console.log(curr_index)
+					
+					$.ajax({
+						url:"http://192.168.155.1:3000/admin/companyList",
+						data:{
+							companyName:_companyName,
+							address:_address,
+							tel:_tel,
+							info:_info,
+							companyPerson:_companyPerson,
+							pic:_pic,
+							currIndex:curr_index,
+							type:"alter"
+						},
+						method:"get",
+						success:function(data){
+							// console.log()
+							if(data.status=="ok"){
+								alert("修改成功");
+							}
+						}
+					})
+			})
+
+
+			function alter(classify){
+
+			}
+			
+		})
+	</script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2018-03-07 14:45:40
 * @Last Modified by:   Administrator
-* @Last Modified time: 2018-03-10 16:17:40
+* @Last Modified time: 2018-03-10 17:35:06
 */
 var express = require('express');
 var router = express.Router();
@@ -129,8 +129,8 @@ router.get("/mine",function(req,res,next){
           return res.json({status:"ok",msg:results});
         })
   }
-
-  
-
 })
+
+
+
 module.exports = router;

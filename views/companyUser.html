@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="/css/base.css">
+	<link rel="stylesheet" href="/css/login.css">
+	<!-- <link rel="stylesheet" href="//common/iconfont.css"> -->
+	<script src="/js/jquery.js"></script>
+	<script src="/js/base.js"></script>
+</head>
+<body>
+	<style>
+	body{
+		background-color: #f2f2f2;
+	}
+	.header-admin{
+		background-color: #58a0e4;
+		height: 0.96rem;
+		line-height: 0.96rem;
+		justify-content: space-between;
+		display: flex;
+		padding: 0 0.24rem;
+		box-sizing: border-box;
+		color: #fff;
+		
+	}
+	.header-admin .theme{
+		font-size: 0.4rem;
+		font-weight: normal;
+	}
+
+	.header-admin .top-back{
+		font-size: 0.4rem;
+
+	}
+	.header-admin .add{
+		font-size: 0.4rem;
+		
+	}
+</style>
+	<!-- <h1>公司管理</h1> -->
+	<header class="header-admin">
+		<div class="top-back">&lt;</div>
+		<h2 class="theme">招聘</h2>
+		<div class="add">+</div>
+	</header>
+
+
+<style>
+	.container-info{
+		padding: 0.2rem;
+		background-color: #f2f2f2;
+	}
+	.container-info .info-box{
+		padding: 0.2rem;
+		background-color: #fff;
+		margin-bottom: 0.25rem;
+	}
+	.container-info .info-box p{
+		display: flex;
+		margin-bottom: 0.2rem;
+		height: 0.78rem;
+	}
+	.container-info .info-box p span{
+		flex: 1;
+		text-align: right;
+		height: 0.78rem;
+		line-height: 0.78rem;
+	}
+	.container-info .info-box p input{
+		border: 1px solid #f2f2f2;
+		flex: 3;text-indent: 0.3rem;
+		border-radius: 8px;
+		outline: none;
+
+	}
+	.container-info .info-box div{
+		display: flex;
+		justify-content: space-around;
+	}
+	.container-info .info-box div input{
+		width: 1.6rem;
+		height: 0.6rem;
+		line-height: 0.6rem;
+		border: none;
+		outline: none;
+		color: #fff;
+		border-radius: 5px;
+	}
+	.container-info .info-box div input:nth-of-type(1){
+		background-color: #58a0e4;
+	}
+	.container-info .info-box div input:nth-of-type(2){
+		background-color: #f65151;
+	}
+</style>
+	<div class="container-info">
+		<div class="info-box">
+			<p><span>岗位名称：</span><input type="text" value=""></p>
+			<p><span>薪资范围：</span><input type="text" value=""></p>
+			<p><span>条件一：</span><input type="text" value=""></p>
+			<p><span>条件二：</span><input type="text" value=""></p>
+			<p><span>条件三：</span><input type="text" value=""></p>
+			<div>
+				<input type="button" value="修改">
+				<input type="button" value="刪除">
+			</div>
+		</div>
+		
+	</div>
+
+	<script>
+		$(function(){
+			var cookies=document.cookie;
+			var arr=cookies.split("; ");
+			var obj={}
+			arr.forEach(function(curr,index,arr){
+				var prop=curr.split("=")[0];
+				var val=curr.split("=")[1];
+				obj[prop]=val;
+				
+			})
+			console.log(obj.companyId)
+			var _id=obj.companyId;
+			// console.log(company_id)
+			$.ajax({
+					url:"http://192.168.155.1:3000/companyUser/"+_id+".html",
+					method:"get",
+					success:function(data){
+						console.log(data);
+						$(".container-info").empty();
+
+						data.forEach(function(curr,index,arr){
+
+							var _info=$(`<div class="info-box id_${curr.id}">
+								<p><span>岗位名称：</span><input type="text" value="${curr.job}"></p>
+								<p><span>薪资范围：</span><input type="text" value="${curr.salary}"></p>
+								<p><span>条件一：</span><input type="text" value="${curr.condition1}"></p>
+								<p><span>条件二：</span><input type="text" value="${curr.condition2}"></p>
+								<p><span>条件三：</span><input type="text" value="${curr.condition3}"></p>
+								<div>
+									<input type="button" value="修改" class="alter">
+									<input type="button" value="刪除" class="del">
+								</div>
+							</div>`);
+						$(".container-info").append(_info);
+						})
+						
+					}
+				})
+// 没写完
+			$(".container-info").on("click",".del",function(e){
+				var info_Id=$(e.target).parents(".info-box")[0].className.split(" ")[1].split("_")[1];
+				console.log(info_Id);
+				$(e.target).parents(".info-box").remove();
+				$.ajax({
+					url:"http://192.168.155.1:3000/companyUser/"+_id+".html",
+					data:{
+						info_Id:info_Id
+					},
+					success:function(data){
+						console.log(data)
+					}
+				})
+
+			})
+		})
+	</script>
+</body>
+</html>

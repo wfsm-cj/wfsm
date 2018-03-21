@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2018-03-07 14:45:40
 * @Last Modified by:   Administrator
-* @Last Modified time: 2018-03-10 17:35:06
+* @Last Modified time: 2018-03-20 14:21:06
 */
 var express = require('express');
 var router = express.Router();
@@ -127,6 +127,56 @@ router.get("/mine",function(req,res,next){
           }
           // console.log(results);
           return res.json({status:"ok",msg:results});
+        })
+  }
+})
+
+// 处理搜索页面
+router.get("/search",function(req,res,next){
+  var _searchInfo=req.query.searchInfo;
+      
+      //返回的不是字符"undefined" 是 undefined
+  if(_searchInfo==undefined || _searchInfo.length==0){
+    console.log("1111");
+    // res.setHeader("Cache-Control","no-cache");
+    // res.redirect("/login");
+    return res.json({status:"no",msg:"请输入要搜索的信息"})
+  }else{
+       var queryString="select * from info ";
+        connection.query(queryString,function(err,results,fileds){
+          if(err){
+            throw err;
+          }
+          var arr=[];
+          // console.log(typeof results);
+          for(var i=0;i<results.length;i++){
+            results[i].flag=0;
+            for(attr in results[i]){
+              // 有些是number类型
+              // console.log(results[i][attr])
+              // console.log(String(results[i][attr]),_searchInfo)
+              if(String(results[i][attr]).indexOf(_searchInfo)!=-1){
+                console.log("HHHHHHHHHHHh")
+                results[i].flag=1;
+              }
+            }
+          }
+
+          for(var i=0;i<results.length;i++){
+            if(results[i].flag==1){
+              arr.push(results[i]);
+            }
+          }
+          console.log(arr);
+
+          // res.json({status})
+          if(arr.length==0){
+           return res.json({"status":"no","msg":"没有搜索到相关内容"})
+          }else{
+           return res.json({"status":"ok","msg":arr});
+          }
+
+          // return res.json({status:"ok",msg:results});
         })
   }
 })

@@ -14,11 +14,13 @@ var register=require("./routes/register");
 var search=require("./routes/search");
 var mine=require("./routes/mine");
 var admin=require("./routes/admin");
+var companyUser=require("./routes/companyUser");
 var deal=require("./routes/deal/deal");
 var details=require("./routes/deal/details");
 
 
 var app = express();
+app.locals.isLogin=false;
 
 // view engine setup
 // 设置模板路径 默认为 ./view
@@ -46,6 +48,7 @@ app.use("/mine",mine);
 app.use("/admin",admin);
 app.use("/deal",deal);
 app.use("/job",details);
+app.use("/companyUser",companyUser);
 
 
 // catch 404 and forward to error handler

@@ -10,7 +10,6 @@
 	<script src="/js/jquery.js"></script>
 	<script src="/js/base.js"></script>
 	<!-- <script src="https://cdn.bootcss.com/jquery/1.2.3/jquery.js"></script> -->
-	<script src="https://cdn.bootcss.com/jquery/2.1.0/jquery.js"></script>
 	<!-- 管理页面 -->
 </head>
 <body>
@@ -19,59 +18,129 @@
 
 <style>
 	.admin{
-		display: flex;
+		/*display: flex;*/
 
 	}
 	.admin .left-list{
-		background-color: yellow;
-		flex: 1;
+		/*flex: 1;*/
+		display: flex;
+		background-color: #fff;
 	}
 	.admin .left-list .list-box{
-		height: 1rem;
-		line-height: 1rem;
-		border: 1px solid red;
+		height: 0.85rem;
+		/*line-height: 0.85rem;*/
+		/*border: 1px solid red;*/
+		padding: 0.225rem 0;
+		flex: 1;
+		box-sizing: border-box;
 	}
 
 	.admin .left-list .list-box a{
-		display: block;
-		height: 1rem;
-		line-height: 1rem;
-		text-align: left;
-		text-indent: 0.2rem;
+		/*display: block;*/
+		/*height: 0.85rem;*/
+		/*line-height: 0.85rem;*/
+		width: 100%;
+		display: inline-block;
+		height: 0.5rem;
+		line-height: 0.5rem;
+		text-align: center;
+		font-size: 0.26rem;
+		border-right: 1px solid #dfdfdf;
+		color: inherit;
+		/*text-indent: 0.2rem;*/
 	}
-	.admin .right-content{
-		background-color: pink;
+	
+	.admin .right-content .right-content-box{
+		padding: 0.24rem;
+		box-sizing: border-box;
+		background-color: #fff;
+		/*overflow: hidden;*/
+		/*height: 8rem;*/
+		margin-bottom: 0.22rem;
+
+	}
+	.admin .right-content .right-content-box .right-content-box-top p{
+		display: flex;
+		height: 0.78rem;
+		margin-bottom: 0.16rem;
+	}
+	.admin .right-content .right-content-box .right-content-box-top p span{
+		height: 0.78rem;
+		line-height: 0.78rem;
+		flex: 1;
+		/*background-color: blue;*/
+		text-align: right
+	}
+	.admin .right-content .right-content-box .right-content-box-top p input{
 		flex: 3;
+		border-radius: 5px;
+
 	}
+	.admin .right-content .right-content-box .right-content-box-top .textarea {
+			display: flex;
+	}
+	.admin .right-content .right-content-box .right-content-box-top .textarea span{
+			flex: 1;
+	}
+	.admin .right-content .right-content-box .right-content-box-top .textarea {
+			flex: 3;
+	}
+	/*.admin .right-content .right-content-box .user-bottom {
+			display: flex;
+	}
+	.admin .right-content .right-content-box .user-bottom img{
+			flex: 1;
+	}*/
+	.admin .right-content .right-content-box .user-bottom p{
+			float: right;
+					}
+	.admin .right-content .right-content-box .user-bottom p input:nth-of-type(1){
+			/*float: right;*/
+			width: 1.6rem;
+			height: 0.6rem;
+			line-height: 0.6rem;
+			background-color: #58a0e4;
+			color: #fff;
+
+					}	
+	.admin .right-content .right-content-box .user-bottom p input:nth-of-type(2){
+			/*float: right;*/
+			width: 1.6rem;
+			height: 0.6rem;
+			line-height: 0.6rem;
+			color: #fff;
+			background-color: #f65151;
+					}				
 	/*每个模块不同高度*/
 	.admin .right-content .user{
-		padding: 0.2rem;
-		height: 2.6rem;
-		background-color: lightblue;
-		border: 1px solid red;
-		box-sizing: border-box;
+		/*padding: 0.2rem;*/
+		height: 4.5rem;
+		/*background-color: lightblue;*/
+		/*border: 1px solid red;*/
 
 	}
 	.admin .right-content .company{
-		padding: 0.2rem;
-		height: 3.5rem;
-		background-color: lightblue;
-		border: 1px solid red;
-		box-sizing: border-box;
+		/*padding: 0.2rem;*/
+		height: 5.6rem;
+		/*background-color: lightblue;*/
+
+		/*border: 1px solid red;*/
 
 	}
-	.admin .right-content .info{
-		padding: 0.2rem;
-		height: 4.8rem;
-		background-color: lightblue;
-		border: 1px solid red;
-		box-sizing: border-box;
+	.admin .right-content .infoList{
+		/*padding: 0.2rem;*/
+		height: 9.5rem;
+		/*background-color: lightblue;*/
+		/*border: 1px solid red;*/
 
 	}
 	.admin .right-content .right-content-box input{
-		border: none;
+		border: 1px solid #f1f1f1;
 		outline: none;
 		text-indent: 0.3rem;
+		width: 5rem;
+		height: 0.78rem;
+		max-width: 5rem;
 	}
 	.admin .right-content .right-content-box img{
 		margin-top: 0.2rem;
@@ -96,52 +165,130 @@
 		float: left;
 
 	}
+
+	.select{
+		/*background-color: pink;*/
+		color: #58a0e4;
+		border-bottom: 0.04rem solid #58a0e4;
+		/*font-weight: bold;*/
+	}
+	/*.select-a{}*/
 </style>
+
+<style>
+	body{
+		background-color: #f2f2f2;
+	}
+	.header-admin{
+		background-color: #58a0e4;
+		height: 0.96rem;
+		line-height: 0.96rem;
+		justify-content: space-between;
+		display: flex;
+		padding: 0 0.24rem;
+		box-sizing: border-box;
+		color: #fff;
+		
+	}
+	.header-admin .theme{
+		font-size: 0.4rem;
+		font-weight: normal;
+	}
+
+	.header-admin .top-back{
+		font-size: 0.4rem;
+
+	}
+	.header-admin .add{
+		font-size: 0.4rem;
+		
+	}
+</style>
+	<header class="header-admin">
+		<div class="top-back">&lt;</div>
+		<h2 class="theme">招聘</h2>
+		<div class="add">+</div>
+	</header>
 	<div class="container admin">
 		<div class="left-list">
-			<div class="list-box"><a href="" id="companyList">公司列表</a><a href=""></a></div>
+			<div class="list-box select"><a href="" id="companyList" >公司列表 </a></div>
 			<div class="list-box"><a href="" id="userList">管理员列表</a></div>
 			<div class="list-box"><a href="" id="infoList">招聘信息</a></div>
-			<div class="list-box"><a href=""></a></div>
 		</div>
 		<div class="right-content">
-			<div class="right-content-box info">
-				<div class="user-left">
-					<p>公&nbsp;司&nbsp;名：<input type="text" class="companyName"></p>
-					<p>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：<input type="text" class="address"></p>
-					<p>工&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作：<input type="text" class="job"></p>
-					<p>工&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;资：<input type="text" class="salary"></p>
-					<p>时&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;间：<input type="text" class="time"></p>
-					<p>条&nbsp;件&nbsp;一：<input type="text" value="" class="condition1"></p>
-					<p>条&nbsp;件&nbsp;二：<input type="text" value="" class="condition2"></p>
-					<p>条&nbsp;件&nbsp;三：<input type="text" value="" class="condition3"></p>
+			<div class="right-content-box user id_1">
+				<div class="right-content-box-top">
+					<p><span>用户名：</span><input type="text" class="username"></p>
+					<p><span>密码：</span><input type="text" class="password"></p>
+					<p><span>人数：</span><input type="text" class="companyPerson"></p>
+					<p><span>电话：</span><input type="text" class="tel"></p>
+					<p><span>发布时间：</span><input type="text" class="time"></p>
+					<div class="textarea"><span>岗位描述：</span><textarea name="" id="" cols="30" rows="5"></textarea></div>
+					<p><span>条件二：</span><input type="text" value="" class="condition2"></p>
+					<p><span>条件二：</span><input type="text" value="" class="condition2"></p>
+					<p><span>条件三：</span><input type="text" value="" class="condition3"></p>
 					
 				</div>
 				<div class="user-bottom">
 					<img src="/dfsa" alt="">
-					<input type="button" value="修改" class="alter">
-					<input type="button" value="删除" class="del">
+					<p>
+						<input type="button" value="修改" class="alter">
+						<input type="button" value="删除" class="del">
+					</p>
 				</div>
 			</div>
 			<div class="right-content-box">
 				
 			</div>
+			<!-- <div class="right-content-box">fdsafsa</div>
 			<div class="right-content-box">fdsafsa</div>
 			<div class="right-content-box">fdsafsa</div>
 			<div class="right-content-box">fdsafsa</div>
 			<div class="right-content-box">fdsafsa</div>
 			<div class="right-content-box">fdsafsa</div>
-			<div class="right-content-box">fdsafsa</div>
-			<div class="right-content-box">fdsafsa</div>
+			<div class="right-content-box">fdsafsa</div> -->
 		</div>
 	</div>
 
 
 	<script>
+
+
+
+
 		$(function(){
 
+			$.ajax({
+					url:"http://192.168.155.1:3000/admin/companyList",
+					method:"get",
+					success:function(data){
+						$(".right-content").empty();
+						data.forEach(function(curr,index,arr){
+							// console.log(curr)
+							var _info=`<div class="right-content-box company id_${curr.id}">
+				<div class="right-content-box-top">
+					<p><span>公司名称：</span><input type="text" class="companyName" value="${curr.companyName}"></p>
+					<p><span>公司地址：</span><input type="text" class="address" value="${curr.address}"></p>
+					<p><span>人数：</span><input type="text" class="companyPerson" value="${curr.companyPerson}"></p>
+					<p><span>电话：</span><input type="text" class="tel" value="${curr.tel}"></p>
+				</div>
+				<div class="user-bottom">
+					<img src="${curr.companyPic}" alt="">
+					<p>
+						<input type="button" value="修改" class="alter-company">
+						<input type="button" value="删除" class="del-company">
+					</p>
+				</div>
+			</div>`;
+			$(".right-content").append(_info);
+						})
+					}
+
+				})
+// userList
 			$("#userList").click(function(e){
-				$(".right-content").attr("id","user")
+				$(".right-content").attr("id","user");
+				$(this).parent().addClass("select").siblings().removeClass("select");
 				e.preventDefault();
 				// console.log($(this).attr("id"));
 				// var _id=$(this).attr("id");
@@ -154,15 +301,17 @@
 						data.forEach(function(curr,index,arr){
 							// console.log(curr)
 							var _info=`<div class="right-content-box user id_${curr.id}">
-				<div class="user-left">
-					<p>用&nbsp;户&nbsp;名：<input type="text" value="${curr.uname}" class="username"></p>
-					<p>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="text" value="${curr.password}" class="password"></p>
-					<p>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：<input type="text" value="${curr.tel}" class="tel"></p>
+				<div class="right-content-box-top">
+					<p><span>用户名：</span><input type="text" class="username" value="${curr.uname}"></p>
+					<p><span>密码：</span><input type="text" class="password" value="${curr.password}"></p>
+					<p><span>电话：</span><input type="text" class="tel" value="${curr.tel}"></p>
 				</div>
 				<div class="user-bottom">
 					<img src="${curr.pic}" alt="">
-					<input type="button" value="修改" class="alter-user">
-					<input type="button" value="删除" class="del-user">
+					<p>
+						<input type="button" value="修改" class="alter-user">
+						<input type="button" value="删除" class="del-user">
+					</p>
 				</div>
 			</div>`;
 			$(".right-content").append(_info);
@@ -175,6 +324,7 @@
 // company点击
 			$("#companyList").click(function(e){
 				$(this).parents(".right-content").attr("id","company")
+				$(this).parent().addClass("select").siblings().removeClass("select");
 				e.preventDefault();
 				// console.log($(this).attr("id"));
 				// var _id=$(this).attr("id");
@@ -186,18 +336,19 @@
 						$(".right-content").empty();
 						data.forEach(function(curr,index,arr){
 							// console.log(curr)
-							var _info=`<div class="right-content-box company id_${curr.id}">
-				<div class="user-left">
-					<p>公&nbsp;司&nbsp;名：<input type="text" class="companyName" value="${curr.companyName}"></p>
-					<p>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：<input type="text" class="address" value="${curr.address}"></p>
-					<p>介&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;绍：<input type="text" class="info" value="${curr.info}"></p>
-					<p>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：<input type="text"  class="tel" value="${curr.tel}"></p>
-					<p>人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数：<input type="text" value="${curr.companyPerson}" class="companyPerson" ></p>
+							var _info=`	<div class="right-content-box company id_${curr.id}">
+				<div class="right-content-box-top">
+					<p><span>公司名称：</span><input type="text" class="companyName" value="${curr.companyName}"></p>
+					<p><span>公司地址：</span><input type="text" class="address" value="${curr.address}"></p>
+					<p><span>人数：</span><input type="text" class="companyPerson" value="${curr.companyPerson}"></p>
+					<p><span>电话：</span><input type="text" class="tel" value="${curr.tel}"></p>
 				</div>
 				<div class="user-bottom">
 					<img src="${curr.companyPic}" alt="">
-					<input type="button" value="修改" class="alter-company">
-					<input type="button" value="删除" class="del-company">
+					<p>
+						<input type="button" value="修改" class="alter-company">
+						<input type="button" value="删除" class="del-company">
+					</p>
 				</div>
 			</div>`;
 			$(".right-content").append(_info);
@@ -211,31 +362,39 @@
 // infoList 点击   ----wei wan 
 			$("#infoList").click(function(e){
 				$(this).parents(".right-content").attr("id","company")
+				$(this).parent().addClass("select").siblings().removeClass("select");
 				e.preventDefault();
 				// console.log($(this).attr("id"));
 				// var _id=$(this).attr("id");
 
 				$.ajax({
-					url:"http://192.168.155.1:3000/admin/companyList",
+					url:"http://192.168.155.1:3000/admin/infoList",
 					method:"get",
 					success:function(data){
+						// console.log(data)
 						$(".right-content").empty();
 						data.forEach(function(curr,index,arr){
-							// console.log(curr)
-							var _info=`<div class="right-content-box company id_${curr.id}">
-				<div class="user-left">
-					<p>公&nbsp;司&nbsp;名：<input type="text" class="companyName" value="${curr.companyName}"></p>
-					<p>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：<input type="text" class="address" value="${curr.address}"></p>
-					<p>介&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;绍：<input type="text" class="info" value="${curr.info}"></p>
-					<p>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：<input type="text"  class="tel" value="${curr.tel}"></p>
-					<p>人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数：<input type="text" value="${curr.companyPerson}" class="companyPerson" ></p>
+							console.log(curr)
+							var _info=`<div class="right-content-box infoList id_${curr.id}">
+				<div class="right-content-box-top">
+					<p><span>公司名称：</span><input type="text" class="companyName" value="${curr.comPanyName}"></p>
+					<p><span>公司地址：</span><input type="text" class="address" value="${curr.address}"></p>
+					<p><span>岗位名称：</span><input type="text" class="job" value="${curr.job}"></p>
+					<p><span>薪资范围：</span><input type="text" class="salary" value="${curr.salary}"></p>
+					<p><span>发布时间：</span><input type="text" class="time" value="${curr.time}"></p>
+					<p><span>条件二：</span><input type="text" value="${curr.condition1}" class="condition1"></p>
+					<p><span>条件二：</span><input type="text" value="${curr.condition2}" class="condition2"></p>
+					<p><span>条件三：</span><input type="text" value="${curr.condition3}" class="condition3"></p>
+					
 				</div>
 				<div class="user-bottom">
 					<img src="${curr.companyPic}" alt="">
-					<input type="button" value="修改" class="alter-company">
-					<input type="button" value="删除" class="del-company">
+					<p>
+						<input type="button" value="修改" class="alter-info">
+						<input type="button" value="删除" class="del-info">
+					</p>
 				</div>
-			</div>`;
+			</div>`
 			$(".right-content").append(_info);
 						})
 					}
@@ -285,6 +444,7 @@
 
 				del("userList","user")	
 				del("companyList","company");
+				del("infoList","info")
 		
 
 
@@ -340,6 +500,50 @@
 							tel:_tel,
 							info:_info,
 							companyPerson:_companyPerson,
+							pic:_pic,
+							currIndex:curr_index,
+							type:"alter"
+						},
+						method:"get",
+						success:function(data){
+							// console.log()
+							if(data.status=="ok"){
+								alert("修改成功");
+							}
+						}
+					})
+			})
+
+
+	// 修改事件 infoList
+			// $(".right-content").on("click","p",function(){
+			// 	console.log("aaa")
+			// })
+			$(".right-content").on("click",".alter-info",function(e){
+					var _companyName=$(e.target).parents(".right-content-box").find(".companyName").val();
+					var _address=$(e.target).parents(".right-content-box").find(".address").val();
+					var _job=$(e.target).parents(".right-content-box").find(".job").val();
+					var _salary=$(e.target).parents(".right-content-box").find(".salary").val();
+					var _time=$(e.target).parents(".right-content-box").find(".time").val();
+					var _condition1=$(e.target).parents(".right-content-box").find(".condition1").val();
+					var _condition2=$(e.target).parents(".right-content-box").find(".condition2").val();
+					var _condition3=$(e.target).parents(".right-content-box").find(".condition3").val();
+					var _pic=$(e.target).parents(".right-content-box").find("img").attr("src");
+					var _class=$(e.target).parents(".right-content-box").attr("class").split(" ");
+					var curr_index=_class[2].split("_")[1];
+				console.log(curr_index)
+					
+					$.ajax({
+						url:"http://192.168.155.1:3000/admin/infoList",
+						data:{
+							companyName:_companyName,
+							address:_address,
+							job:_job,
+							salary:_salary,
+							time:_time,
+							condition1:_condition1,
+							condition2:_condition2,
+							condition3:_condition3,
 							pic:_pic,
 							currIndex:curr_index,
 							type:"alter"

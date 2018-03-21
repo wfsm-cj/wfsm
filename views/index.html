@@ -10,6 +10,7 @@
 	<script src="js/jquery.js"></script>
 
 	<script src="js/base.js"></script>
+	<script src="js/headerFooter.js"></script>
 	<!-- <div class="box">
 			<div class="pic">   -info
 				<img src="/images/logo.png" alt="">
@@ -42,7 +43,7 @@
 						// data=JSON.parse(data);
 						$(".container").empty();
 						data.forEach(function(curr,index,arr){
-							var _box=$(` <div class="box">
+							var _box=$(` <div class="box id_${curr.id}">
 								<div class="pic">
 									<img src="${curr.companyPic}" alt="">
 								</div>
@@ -88,9 +89,11 @@
 			$("#custom").click(getInfo);
 
 			$(".container")	.delegate(".box","click",function(curr){
-				console.log($(this).index());
-				var index=$(this).index()+1;
-				location.href="/job/"+index+".html";
+				// $(this).index()
+				var _id=this.className.split(" ")[1];
+				var _currIndex=_id.split("_")[1];
+				
+				location.href="/job/"+_currIndex+".html";
 			})
 
 			
